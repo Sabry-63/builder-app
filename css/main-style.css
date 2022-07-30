@@ -1,0 +1,113 @@
+/* 
+    1- Globel Style 
+    2- Tables Tabs Style
+*/
+
+/* 1- Globel Style */
+:root {
+    --main-color: #37b2ad;
+    --main-bg-color: #f1f6f9;
+    --white-color: #fff;
+    --gray-color: #dae3e8;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+input,
+button {
+    box-shadow: none !important;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.small-icon {
+    font-size: 12px;
+}
+
+.main-btn {
+    color: var(--white-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid var(--main-color);
+}
+
+.main-btn::before,
+.main-btn::after {
+    content: '';
+    background-color: var(--main-color);
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: -1;
+    transition: width 0.25s linear;
+}
+
+.main-btn::before {
+    left: 0;
+}
+
+.main-btn::after {
+    right: 0;
+}
+
+.main-btn:hover {
+    color: var(--main-color);
+}
+
+.main-btn:hover::before,
+.main-btn:hover::after {
+    width: 0;
+}
+
+/* 2- Tables Tabs Style */
+#tables-tabs {
+    width: 20%;
+    height: 100vh;
+    transition: margin-left 0.25s linear;
+}
+
+#btn-toggle {
+    position: absolute;
+    right: -38px;
+    width: 38px;
+    background-color: var(--gray-color);
+    top: 10px;
+}
+
+#btn-toggle > i,
+.table-group__body__column__head > i {
+    transition: transform 0.25s linear;
+}
+
+#btn-toggle.open > i,
+.table-group__body__column__head.toggle-btn > i {
+    transform: rotate(180deg);
+}
+
+.table__content {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.25s linear;
+}
+
+.table__content.toggle-table {
+    height: auto;
+    overflow: visible;
+    padding: 10px 0;
+}
+
+.table-group__body__column {
+    background-color: var(--main-bg-color);
+}

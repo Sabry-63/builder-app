@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>App Builder</title>
+        <!-- Icons fontawesome-5 -->
+        <link rel="stylesheet" href="css/vendor/all.min.css" />
+        <!-- Bootstrap-5 File -->
+        <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+        <!-- Main css File -->
+        <link rel="stylesheet" href="css/main-style.css" />
+    </head>
+    <body>
+        <!-- Start Main -->
+        <main class="d-flex gap-5">
+            <aside
+                id="tables-tabs"
+                class="position-relative shadow-sm bg-white"
+            >
+                <button id="btn-toggle" class="btn text-black-50">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <div id="tables-content" class="table-group">
+                    <div
+                        class="table-group__head d-flex justify-content-between align-items-center border-bottom px-3 py-2 shadow-sm"
+                    >
+                        <h5 class="text-capitalize text-black-50">Tables</h5>
+                        <button
+                            type="button"
+                            class="d-flex align-items-center gap-2 text-capitalize btn main-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#tableModal"
+                        >
+                            <i
+                                class="fa fa-plus small-icon"
+                                aria-hidden="true"
+                            ></i>
+                            new table
+                        </button>
+                    </div>
+                    <div class="table-group__body" id="table-group"></div>
+                </div>
+            </aside>
+            <article id="tables-rendering">
+                <section>tables</section>
+            </article>
+        </main>
+        <!-- End Main -->
+
+        <!-- Modal Add New Table-->
+        <div
+            class="modal fade"
+            id="tableModal"
+            tabindex="-1"
+            aria-labelledby="tableModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title text-capitalize"
+                            id="tableModalLabel"
+                        >
+                            Add new Table
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name=""
+                                    id="input-add"
+                                    aria-describedby="helpId"
+                                    placeholder="Table Name ..."
+                                />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            class="btn main-btn text-capitalize"
+                            id="btn-add"
+                        >
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Add New Column-->
+        <div
+            class="modal fade"
+            id="columnModal"
+            tabindex="-1"
+            aria-labelledby="columnModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title text-capitalize"
+                            id="tableModalLabel"
+                        >
+                            Add new Colum
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="column-name" class="form-label"
+                                    >name</label
+                                >
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name=""
+                                    id="column-name"
+                                    aria-describedby="helpId"
+                                    placeholder="Column Name ..."
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="column-type" class="form-label"
+                                    >type</label
+                                >
+                                <select
+                                    class="form-control"
+                                    name=""
+                                    id="column-type"
+                                >
+                                    <option value="varchar">varchar</option>
+                                    <option value="bitint">bitint</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="column-key" class="form-label"
+                                    >Key</label
+                                >
+                                <select
+                                    class="form-control"
+                                    name=""
+                                    id="column-key"
+                                >
+                                    <option value="1">yes</option>
+                                    <option value="0">no</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            class="btn main-btn text-capitalize"
+                            id="btn-add-column"
+                        >
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap Js File -->
+        <script src="js/vendor/bootstrap.bundle.min.js" type="module"></script>
+        <!-- Main Js File -->
+        <script src="js/app.js" type="module"></script>
+    </body>
+</html>
