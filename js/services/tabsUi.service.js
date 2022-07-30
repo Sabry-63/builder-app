@@ -6,13 +6,14 @@ import {
 } from './tableAction.serivce.js';
 
 // Constats
+let tableId = null;
 const tableGroup = document.getElementById('table-group');
 const noTable = `
     <div class="alert alert-warning" role="alert">
         Dont Have Any Table
     </div>`;
 
-export const renderTables = (tablesUi) => {
+export const renderTabs = (tablesUi) => {
     tableGroup.innerHTML = '';
     if (tablesUi.length !== 0) {
         tablesUi.forEach((t) => {
@@ -126,15 +127,17 @@ export const renderTables = (tablesUi) => {
                 });
             });
             tableGroup.querySelectorAll('.btn-add-column').forEach((ele) => {
-                const tableGroupColumns = document.querySelector(
-                    `#columns-group-content-${ele.dataset.id}`
-                );
-
-                ele.addEventListener('click', () => {
-                    addColumns(ele.dataset.id, tableGroupColumns);
-                });
+                ele.onclick = () => {
+                    tableId = ele.dataset.id;
+                };
             });
         });
+        document.getElementById('btn-add-column').onclick = function () {
+            const tableGroupColumns = document.querySelector(
+                `#columns-group-content-${tableId}`
+            );
+            addColumns(tableId, tableGroupColumns);
+        };
     } else {
         tableGroup.innerHTML = noTable;
     }
