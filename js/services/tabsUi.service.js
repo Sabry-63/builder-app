@@ -83,11 +83,24 @@ export const renderTabs = (tablesUi) => {
                             <div
                                 class="d-flex align-items-center gap-2"
                             >
-                                <button
-                                    class="btn text-black-50 border text-capitalize px-2 py-1"
-                                >
-                                    add index
+                            <div class="dropdown">
+                                <button class="btn text-black-50 border text-capitalize px-2 py-1 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                add index
                                 </button>
+                                <ul class="dropdown-menu dropdown-${
+                                    t.id
+                                }" aria-labelledby="dropdownMenuButton1" data-id=${
+                t.id
+            }>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Action ${t.id}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                                 <button
                                     class="btn main-btn text-capitalize px-2 py-1 btn-add-column"
                                     data-bs-toggle="modal"

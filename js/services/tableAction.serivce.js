@@ -51,3 +51,12 @@ export function addColumns(id, parent, tablesUiCols) {
     // typeSelect.value = '';
     // keySelect.value = '';
 }
+
+export function draw(start, end) {
+    console.log(start);
+    console.log(end);
+    new LeaderLine(
+        document.getElementById(`${start}`),
+        document.getElementById(`${end}`)
+    );
+}
