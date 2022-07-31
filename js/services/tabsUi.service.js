@@ -4,7 +4,7 @@ import {
     addColumns,
     toggleTable,
 } from './tableAction.serivce.js';
-import { renderTables } from './tablesUi.service.js';
+import { renderColumnsTable, renderTables } from './tablesUi.service.js';
 
 // Constats
 let tableId = null;
@@ -150,14 +150,7 @@ export const renderTabs = (tablesUi) => {
             });
         });
         document.getElementById('btn-add-column').onclick = function () {
-            const tableGroupColumns = document.querySelector(
-                `#columns-group-content-${tableId}`
-            );
-            const tablesUiCols = document.querySelector(
-                `#tables-cols-render-ui-${tableId}`
-            );
-
-            addColumns(tableId, tableGroupColumns, tablesUiCols);
+            addColumns(tableId);
             renderTables(tablesUi);
         };
     } else {
@@ -165,34 +158,39 @@ export const renderTabs = (tablesUi) => {
     }
 
     renderTables(tablesUi);
+    renderColumns(tablesUi);
+    renderColumnsTable(tablesUi);
 };
 
-export function renderColumns(table, parent) {
-    parent.innerHTML = '';
-    table.columns.forEach((col) => {
-        return (parent.innerHTML += `
-                    <div  class="d-flex justify-content-between align-items-center mb-2 px-3" >
-                        <span>${col.name}</span>
-                        <span>${col.type}</span>
-                        <span>N</span>
-                        <span>
-                        ${
-                            col.key === '1'
-                                ? ` <i
-                        class="fa fa-key"
+export function renderColumns(tables) {
+    tables.forEach((t) => {
+        document.getElementById(`columns-group-content-${t.id}`).innerHTML = '';
+        t.columns.forEach((col) => {
+            document.getElementById(
+                `columns-group-content-${t.id}`
+            ).innerHTML += `
+            <div  class="d-flex justify-content-between align-items-center mb-2 px-3" >
+                <span>${col.name}</span>
+                <span>${col.type}</span>
+                <span>N</span>
+                <span>
+                ${
+                    col.key === '1'
+                        ? ` <i
+                class="fa fa-key"
+                aria-hidden="true"
+            ></i>`
+                        : ` <i class="fa fa-circle" aria-hidden="true"></i>`
+                }
+                </span>
+                <span>
+                    <i
+                        class="fa fa-ellipsis-h"
                         aria-hidden="true"
-                    ></i>`
-                                : ''
-                        }
-
-                        </span>
-                        <span>
-                            <i
-                                class="fa fa-ellipsis-h"
-                                aria-hidden="true"
-                            ></i>
-                        </span>
-                    </div>
-                `);
+                    ></i>
+                </span>
+            </div>
+        `;
+        });
     });
 }

@@ -37,7 +37,7 @@ export function toggleTable(id) {
     btn.classList.toggle('toggle-btn');
 }
 
-export function addColumns(id, parent, tablesUiCols) {
+export function addColumns(id) {
     const table = tables.tables.find((t) => +t.id === +id);
     const obj = {
         name: nameText.value,
@@ -50,8 +50,8 @@ export function addColumns(id, parent, tablesUiCols) {
         keySelect.value !== ''
     ) {
         table.addColumn(obj);
-        renderColumns(table, parent);
-        renderColumnsTable(table, tablesUiCols);
+        renderColumns(tables.tables);
+        renderColumnsTable(tables.tables);
 
         nameText.value = '';
         typeSelect.value = '';

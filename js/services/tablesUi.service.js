@@ -30,15 +30,18 @@ export function renderTables(tables) {
     });
 }
 
-export function renderColumnsTable(table, parent) {
-    parent.innerHTML = '';
-    table.columns &&
-        table.columns.forEach((col) => {
-            return (parent.innerHTML += `
-                <div class="d-flex justify-content-between align-items-center gap-4">
-                    <span >${col.name}</span>
-                    <span >${col.type}</span>
-                </div>
-            `);
+export function renderColumnsTable(tables) {
+    tables.forEach((t) => {
+        document.getElementById(`tables-cols-render-ui-${t.id}`).innerHTML = '';
+        t.columns.forEach((col) => {
+            document.getElementById(
+                `tables-cols-render-ui-${t.id}`
+            ).innerHTML += `
+            <div class="d-flex justify-content-between align-items-center gap-4">
+            <span >${col.name}</span>
+            <span >${col.type}</span>
+        </div>
+        `;
         });
+    });
 }
