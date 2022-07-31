@@ -11,9 +11,13 @@ const keySelect = document.getElementById('column-key');
 const tables = new Tables();
 
 btnCreate.addEventListener('click', () => {
-    tables.addTable(inpAdd.value);
-    renderTabs(tables.tables);
-    inpAdd.value = '';
+    if (inpAdd.value !== '') {
+        tables.addTable(inpAdd.value);
+        renderTabs(tables.tables);
+        inpAdd.value = '';
+    } else {
+        alert('cant add empty val');
+    }
 });
 
 export function editTable(id, val) {
@@ -40,16 +44,23 @@ export function addColumns(id, parent, tablesUiCols) {
         type: typeSelect.value,
         key: keySelect.value,
     };
+    if (
+        nameText.value !== '' &&
+        typeSelect.value !== '' &&
+        keySelect.value !== ''
+    ) {
+        table.addColumn(obj);
+        renderColumns(table, parent);
+        renderColumnsTable(table, tablesUiCols);
 
-    table.addColumn(obj);
-    renderColumns(table, parent);
-    renderColumnsTable(table, tablesUiCols);
+        nameText.value = '';
+        typeSelect.value = '';
+        keySelect.value = '';
 
-    console.log(renderColumnsTable());
-
-    // nameText.value = '';
-    // typeSelect.value = '';
-    // keySelect.value = '';
+        console.log(renderColumnsTable());
+    } else {
+        alert('cant add empty val');
+    }
 }
 
 export function draw(start, end) {

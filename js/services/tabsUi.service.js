@@ -51,6 +51,9 @@ export const renderTabs = (tablesUi) => {
                         <div class="table-group__body__column__content" id="columns-group-content-${
                             t.id
                         }">
+                        <p class="alert alert-warning mx-4" role="alert">
+                            Dont Have Any Columns
+                        </p>
                         </div>
                        
                         <div

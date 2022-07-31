@@ -8,9 +8,12 @@ export function renderTables(tables) {
     tables.forEach((t) => {
         tablesContent.innerHTML += `
         <div class="col-3 table-box-item " id="draw-${t.id}">
-            <div class="border rounded-3 shadow-sm p-2 h-100">
-            <h2 class="bg-gray text-center border-bottom p-2">${t.name}</h2>
-            <div id="tables-cols-render-ui-${t.id}" class="render-col-table bg-white px-3 py-2 " data-id=${t.id}>
+            <div class="border rounded-3 shadow-sm  ">
+            <h5 class="bg-gray text-center border-bottom p-3 mb-0">${t.name}</h5>
+            <div id="tables-cols-render-ui-${t.id}" class="render-col-table bg-white px-3 p-2 h-100" data-id=${t.id}>
+                <p class="alert alert-warning" role="alert">
+                    Dont Have Any Columns
+                </p>
             </div>
             </div>
         </div>
