@@ -1,5 +1,6 @@
 import { Tables } from './table.service.js';
-import { renderTabs } from './tabsUi.service.js';
+import { renderColumnsTable } from './tablesUi.service.js';
+import { renderTabs, renderColumns } from './tabsUi.service.js';
 
 const inpAdd = document.getElementById('input-add');
 const btnCreate = document.getElementById('btn-add');
@@ -32,7 +33,7 @@ export function toggleTable(id) {
     btn.classList.toggle('toggle-btn');
 }
 
-export function addColumns(id, parent) {
+export function addColumns(id, parent, tablesUiCols) {
     const table = tables.tables.find((t) => +t.id === +id);
     const obj = {
         name: nameText.value,
@@ -41,35 +42,12 @@ export function addColumns(id, parent) {
     };
 
     table.addColumn(obj);
-    parent.innerHTML = '';
-    table.columns.forEach((col) => {
-        return (parent.innerHTML += `
-                    <div  class="d-flex justify-content-between align-items-center mb-2 px-3" >
-                        <span>${col.name}</span>
-                        <span>${col.type}</span>
-                        <span>N</span>
-                        <span>
-                        ${
-                            col.key === '1'
-                                ? ` <i
-                        class="fa fa-key"
-                        aria-hidden="true"
-                    ></i>`
-                                : ''
-                        }
+    renderColumns(table, parent);
+    renderColumnsTable(table, tablesUiCols);
 
-                        </span>
-                        <span>
-                            <i
-                                class="fa fa-ellipsis-h"
-                                aria-hidden="true"
-                            ></i>
-                        </span>
-                    </div>
-                `);
-    });
+    console.log(renderColumnsTable());
 
-    nameText.value = '';
-    typeSelect.value = '';
-    keySelect.value = '';
+    // nameText.value = '';
+    // typeSelect.value = '';
+    // keySelect.value = '';
 }

@@ -4,6 +4,7 @@ export class Table {
         this.name = name;
         this.isEdit = false;
         this.columns = [];
+        this.indexes = [];
     }
     // Add New Column
     addColumn(obj) {
@@ -30,7 +31,7 @@ export class Tables {
     addTable(name) {
         const table = new Table(name, this.tables.length + 1);
         this.tables.push(table);
-        return table;
+        return this.tables;
     }
 
     // Remove New Table

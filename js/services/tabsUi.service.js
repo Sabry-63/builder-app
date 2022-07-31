@@ -4,6 +4,7 @@ import {
     addColumns,
     toggleTable,
 } from './tableAction.serivce.js';
+import { renderTables } from './tablesUi.service.js';
 
 // Constats
 let tableId = null;
@@ -136,9 +137,46 @@ export const renderTabs = (tablesUi) => {
             const tableGroupColumns = document.querySelector(
                 `#columns-group-content-${tableId}`
             );
-            addColumns(tableId, tableGroupColumns);
+            const tablesUiCols = document.querySelector(
+                `#tables-cols-render-ui-${tableId}`
+            );
+
+            addColumns(tableId, tableGroupColumns, tablesUiCols);
+            renderTables(tablesUi);
         };
     } else {
         tableGroup.innerHTML = noTable;
     }
+
+    renderTables(tablesUi);
 };
+
+export function renderColumns(table, parent) {
+    parent.innerHTML = '';
+    table.columns.forEach((col) => {
+        return (parent.innerHTML += `
+                    <div  class="d-flex justify-content-between align-items-center mb-2 px-3" >
+                        <span>${col.name}</span>
+                        <span>${col.type}</span>
+                        <span>N</span>
+                        <span>
+                        ${
+                            col.key === '1'
+                                ? ` <i
+                        class="fa fa-key"
+                        aria-hidden="true"
+                    ></i>`
+                                : ''
+                        }
+
+                        </span>
+                        <span>
+                            <i
+                                class="fa fa-ellipsis-h"
+                                aria-hidden="true"
+                            ></i>
+                        </span>
+                    </div>
+                `);
+    });
+}
